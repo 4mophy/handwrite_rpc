@@ -2,7 +2,7 @@
  * @Author: yuancheng yuancheng@mori-matsu.com
  * @Date: 2024-03-07 14:54:09
  * @LastEditors: yuancheng yuancheng@mori-matsu.com
- * @LastEditTime: 2024-03-08 14:14:43
+ * @LastEditTime: 2024-03-12 14:32:20
  * @FilePath: \handwrite_rpc\example-consumer\src\main\java\com\p1nkpeach\example\consumer\ConsumerExample.java
  * @Description: 服务消费者示例
  */
@@ -35,6 +35,8 @@ public class ConsumerExample {
         } else {
             System.out.println("user is null");
         }
+        long number = userService.getNumber();
+        System.out.println(number);
 
     }
 }

@@ -2,7 +2,7 @@
  * @Author: yuancheng yuancheng@mori-matsu.com
  * @Date: 2024-03-07 14:14:26
  * @LastEditors: yuancheng yuancheng@mori-matsu.com
- * @LastEditTime: 2024-03-07 16:10:12
+ * @LastEditTime: 2024-03-12 15:22:46
  * @FilePath: \handwrite_rpc\example-common\src\main\java\com\p1nkpeach\example\common\service\UserService.java
  * @Description: 用户服务
  */
@@ -18,4 +18,13 @@ public interface UserService {
      * @return
      */
     User getUser(User user);
+
+    /**
+     * 获取数字
+     * 
+     * @return
+     */
+    default short getNumber() {
+        return 1;
+    }
 }
