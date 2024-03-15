@@ -1,9 +1,9 @@
 /**
  * @Author: yuancheng yuancheng@mori-matsu.com
  * @Date: 2024-03-07 16:22:02
- * @LastEditors: yuancheng yuancheng@mori-matsu.com
- * @LastEditTime: 2024-03-08 12:11:59
- * @FilePath: \handwrite_rpc\easy-rpc\src\main\java\com\p1nkpeach\easyrpc\server\HttpServerHandler.java
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-03-14 13:05:32
+ * @FilePath: \handwrite_rpc\easy-rpc-core\src\main\java\com\p1nkpeach\easyrpccore\server\HttpServerHandler.java
  * @Description: 请求处理器
  */
 package com.p1nkpeach.easyrpccore.server;
@@ -11,11 +11,12 @@ package com.p1nkpeach.easyrpccore.server;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
+import com.p1nkpeach.easyrpccore.RpcApplication;
 import com.p1nkpeach.easyrpccore.model.RpcRequest;
 import com.p1nkpeach.easyrpccore.model.RpcResponse;
 import com.p1nkpeach.easyrpccore.registry.LocalRegistry;
-import com.p1nkpeach.easyrpccore.serializer.JdkSerializer;
 import com.p1nkpeach.easyrpccore.serializer.Serializer;
+import com.p1nkpeach.easyrpccore.serializer.SerializerFactory;
 
 import io.vertx.core.Handler;
 import io.vertx.core.buffer.Buffer;
@@ -27,7 +28,7 @@ public class HttpServerHandler implements Handler<HttpServerRequest> {
     @Override
     public void handle(HttpServerRequest request) {
         // 指定序列化器
-        final Serializer serializer = new JdkSerializer();
+        final Serializer serializer = SerializerFactory.getInstance(RpcApplication.getRpcConfig().getSerializer());
 
         // 记录日志
         System.out.println("Received request: " + request.method() + " " + request.uri());

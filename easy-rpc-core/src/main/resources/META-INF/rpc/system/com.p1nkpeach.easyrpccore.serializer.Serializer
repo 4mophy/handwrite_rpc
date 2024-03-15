@@ -1,0 +1,2 @@
+jdk=com.p1nkpeach.easyrpccore.serializer.JdkSerializer
+hessian=com.p1nkpeach.easyrpccore.serializer.HessianSerializer

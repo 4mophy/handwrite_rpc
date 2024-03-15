@@ -1,12 +1,14 @@
 /**
  * @Author: yuancheng yuancheng@mori-matsu.com
  * @Date: 2024-03-08 13:38:28
- * @LastEditors: yuancheng yuancheng@mori-matsu.com
- * @LastEditTime: 2024-03-08 13:41:33
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-03-14 12:58:30
  * @FilePath: \handwrite_rpc\easy-rpc-core\src\main\java\com\p1nkpeach\easyrpccore\config\RpcConfig.java
  * @Description: RPC配置类
  */
 package com.p1nkpeach.easyrpccore.config;
+
+import com.p1nkpeach.easyrpccore.serializer.SerializerKeys;
 
 import lombok.Data;
 
@@ -36,4 +38,9 @@ public class RpcConfig {
      * 模拟调用
      */
     private boolean mock = false;
+
+    /**
+     * 序列化器
+     */
+    private String serializer = SerializerKeys.JDK;
 }

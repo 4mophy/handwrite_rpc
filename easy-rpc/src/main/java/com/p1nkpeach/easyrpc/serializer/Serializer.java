@@ -1,8 +1,6 @@
 /**
  * @Author: yuancheng yuancheng@mori-matsu.com
  * @Date: 2024-03-07 15:50:16
- * @LastEditors: yuancheng yuancheng@mori-matsu.com
- * @LastEditTime: 2024-03-07 15:56:10
  * @FilePath: \handwrite_rpc\easy-rpc\src\main\java\com\p1nkpeach\easyrpc\serializer\Serializer.java
  * @Description: 序列化器接口
  */

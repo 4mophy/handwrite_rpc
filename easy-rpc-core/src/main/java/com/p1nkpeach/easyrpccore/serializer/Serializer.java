@@ -1,9 +1,9 @@
 /**
  * @Author: yuancheng yuancheng@mori-matsu.com
  * @Date: 2024-03-07 15:50:16
- * @LastEditors: yuancheng yuancheng@mori-matsu.com
- * @LastEditTime: 2024-03-07 15:56:10
- * @FilePath: \handwrite_rpc\easy-rpc\src\main\java\com\p1nkpeach\easyrpc\serializer\Serializer.java
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-03-14 09:06:18
+ * @FilePath: \handwrite_rpc\easy-rpc-core\src\main\java\com\p1nkpeach\easyrpccore\serializer\Serializer.java
  * @Description: 序列化器接口
  */
 package com.p1nkpeach.easyrpccore.serializer;

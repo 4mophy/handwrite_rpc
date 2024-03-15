@@ -1,8 +1,6 @@
 /**
  * @Author: yuancheng yuancheng@mori-matsu.com
  * @Date: 2024-03-08 13:54:37
- * @LastEditors: yuancheng yuancheng@mori-matsu.com
- * @LastEditTime: 2024-03-08 14:03:22
  * @FilePath: \handwrite_rpc\easy-rpc-core\src\main\java\com\p1nkpeach\easyrpccore\RpcApplication.java
  * @Description: RPC框架应用 相当于holder，存放项目全局用到的变量。双检锁单例模式实现
  */

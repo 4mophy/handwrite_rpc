@@ -1,8 +1,6 @@
 /**
  * @Author: yuancheng yuancheng@mori-matsu.com
  * @Date: 2024-03-07 14:29:27
- * @LastEditors: yuancheng yuancheng@mori-matsu.com
- * @LastEditTime: 2024-03-12 14:12:04
  * @FilePath: \handwrite_rpc\example-provider\src\main\java\com\p1nkpeach\example\provider\ProviderExample.java
  * @Description: 服务提供者示例
  */

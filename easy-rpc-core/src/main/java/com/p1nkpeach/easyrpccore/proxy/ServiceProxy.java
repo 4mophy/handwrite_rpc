@@ -1,9 +1,9 @@
 /**
  * @Author: yuancheng yuancheng@mori-matsu.com
  * @Date: 2024-03-07 19:01:03
- * @LastEditors: yuancheng yuancheng@mori-matsu.com
- * @LastEditTime: 2024-03-07 19:03:15
- * @FilePath: \handwrite_rpc\easy-rpc\src\main\java\com\p1nkpeach\easyrpc\proxy\ServiceProxy.java
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-03-14 14:28:38
+ * @FilePath: \handwrite_rpc\easy-rpc-core\src\main\java\com\p1nkpeach\easyrpccore\proxy\ServiceProxy.java
  * @Description: 服务代理（JDK动态代理）
  */
 package com.p1nkpeach.easyrpccore.proxy;
@@ -12,10 +12,11 @@ import java.io.IOException;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
+import com.p1nkpeach.easyrpccore.RpcApplication;
 import com.p1nkpeach.easyrpccore.model.RpcRequest;
 import com.p1nkpeach.easyrpccore.model.RpcResponse;
-import com.p1nkpeach.easyrpccore.serializer.JdkSerializer;
 import com.p1nkpeach.easyrpccore.serializer.Serializer;
+import com.p1nkpeach.easyrpccore.serializer.SerializerFactory;
 
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
@@ -25,7 +26,7 @@ public class ServiceProxy implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
          // 指定序列化器
-        Serializer serializer = new JdkSerializer();
+        final Serializer serializer = SerializerFactory.getInstance(RpcApplication.getRpcConfig().getSerializer());
 
         // 构造请求
         RpcRequest rpcRequest = RpcRequest.builder()

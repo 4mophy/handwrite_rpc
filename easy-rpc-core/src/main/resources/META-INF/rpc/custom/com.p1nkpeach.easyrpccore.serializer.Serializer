@@ -1,0 +1,2 @@
+json=com.p1nkpeach.easyrpccore.serializer.JsonSerializer
+kryo=com.p1nkpeach.easyrpccore.serializer.KryoSerializer
