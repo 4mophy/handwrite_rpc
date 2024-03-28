@@ -1,0 +1,1 @@
+etcd=com.p1nkpeach.easyrpccore.registry.EtcdRegistry

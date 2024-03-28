@@ -6,8 +6,11 @@
  */
 package com.p1nkpeach.easyrpccore;
 
+import com.p1nkpeach.easyrpccore.config.RegistryConfig;
 import com.p1nkpeach.easyrpccore.config.RpcConfig;
 import com.p1nkpeach.easyrpccore.constant.RpcConstant;
+import com.p1nkpeach.easyrpccore.registry.Registry;
+import com.p1nkpeach.easyrpccore.registry.RegistryFactory;
 import com.p1nkpeach.easyrpccore.utils.ConfigUtils;
 
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +27,11 @@ public class RpcApplication {
     public static void init(RpcConfig newRpcConfig) {
         rpcConfig = newRpcConfig;
         log.info("rpc init, config = {}", newRpcConfig.toString());
+        // 注册中心初始化
+        RegistryConfig registryConfig = rpcConfig.getRegistryConfig();
+        Registry register = RegistryFactory.getInstance(registryConfig.getRegistry());
+        register.init(registryConfig);
+        log.info("registry init, config = {}", registryConfig);
     }
 
     /**

@@ -1,8 +1,6 @@
 /**
  * @Author: yuancheng yuancheng@mori-matsu.com
  * @Date: 2024-03-08 13:38:28
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-03-14 12:58:30
  * @FilePath: \handwrite_rpc\easy-rpc-core\src\main\java\com\p1nkpeach\easyrpccore\config\RpcConfig.java
  * @Description: RPC配置类
  */
@@ -17,7 +15,7 @@ public class RpcConfig {
     /**
      * 名称
      */
-    private String name = "yu-rpc";
+    private String name = "easy-rpc";
 
     /**
      * 版本号
@@ -43,4 +41,9 @@ public class RpcConfig {
      * 序列化器
      */
     private String serializer = SerializerKeys.JDK;
+
+    /**
+     * 注册中心配置
+     */
+    private RegistryConfig registryConfig = new RegistryConfig();
 }
