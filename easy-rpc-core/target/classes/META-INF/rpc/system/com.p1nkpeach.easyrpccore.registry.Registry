@@ -1,1 +1,2 @@
 etcd=com.p1nkpeach.easyrpccore.registry.EtcdRegistry
+zookeeper=com.p1nkpeach.easyrpccore.registry.ZookeeperRegistry
