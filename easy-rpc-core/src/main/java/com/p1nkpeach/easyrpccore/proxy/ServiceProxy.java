@@ -2,13 +2,12 @@
  * @Author: yuancheng yuancheng@mori-matsu.com
  * @Date: 2024-03-07 19:01:03
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-04-28 10:23:33
+ * @LastEditTime: 2024-04-30 13:35:01
  * @FilePath: \handwrite_rpc\easy-rpc-core\src\main\java\com\p1nkpeach\easyrpccore\proxy\ServiceProxy.java
  * @Description: 服务代理（JDK动态代理）
  */
 package com.p1nkpeach.easyrpccore.proxy;
 
-import java.io.IOException;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.util.List;
@@ -23,10 +22,10 @@ import com.p1nkpeach.easyrpccore.registry.Registry;
 import com.p1nkpeach.easyrpccore.registry.RegistryFactory;
 import com.p1nkpeach.easyrpccore.serializer.Serializer;
 import com.p1nkpeach.easyrpccore.serializer.SerializerFactory;
+import com.p1nkpeach.easyrpccore.server.tcp.VertxTcpClient;
 
 import cn.hutool.core.collection.CollUtil;
-import cn.hutool.http.HttpRequest;
-import cn.hutool.http.HttpResponse;
+
 
 public class ServiceProxy implements InvocationHandler {
 
@@ -46,9 +45,6 @@ public class ServiceProxy implements InvocationHandler {
                 .args(args)
                 .build();
         try {
-            // 序列化
-            byte[] bodyBytes = serializer.serialize(rpcRequest);
-
             RpcConfig rpcConfig = RpcApplication.getRpcConfig();
             Registry registry = RegistryFactory.getInstance(rpcConfig.getRegistryConfig().getRegistry());
             ServiceMetaInfo serviceMetaInfo = new ServiceMetaInfo();
@@ -58,24 +54,22 @@ public class ServiceProxy implements InvocationHandler {
             if (CollUtil.isEmpty(serviceMetaInfoList)) {
                 throw new RuntimeException("暂无服务地址");
             }
-
-            // 暂时先取第一个
             ServiceMetaInfo selectedServiceMetaInfo = serviceMetaInfoList.get(0);
-
-            // 发送请求
-            try (HttpResponse httpResponse = HttpRequest.post(selectedServiceMetaInfo.getServiceAddress())
-                    .body(bodyBytes)
-                    .execute()) {
-                byte[] result = httpResponse.bodyBytes();
-                // 反序列化
-                RpcResponse rpcResponse = serializer.deserialize(result, RpcResponse.class);
-                return rpcResponse.getData();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+            RpcResponse rpcResponse = VertxTcpClient.doRequest(rpcRequest, selectedServiceMetaInfo);
+            return rpcResponse.getData();
+            // // 发送请求
+            // try (HttpResponse httpResponse =
+            // HttpRequest.post(selectedServiceMetaInfo.getServiceAddress())
+            // .body(bodyBytes)
+            // .execute()) {
+            // byte[] result = httpResponse.bodyBytes();
+            // // 反序列化
+            // RpcResponse rpcResponse = serializer.deserialize(result, RpcResponse.class);
+            // return rpcResponse.getData();
+            // }
+        } catch (Exception e) {
+            throw new RuntimeException("调用失败");
         }
-
-        return null;
     }
 
 }

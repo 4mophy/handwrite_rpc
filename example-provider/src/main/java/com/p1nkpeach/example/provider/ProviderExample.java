@@ -13,8 +13,7 @@ import com.p1nkpeach.easyrpccore.model.ServiceMetaInfo;
 import com.p1nkpeach.easyrpccore.registry.LocalRegistry;
 import com.p1nkpeach.easyrpccore.registry.Registry;
 import com.p1nkpeach.easyrpccore.registry.RegistryFactory;
-import com.p1nkpeach.easyrpccore.server.HttpServer;
-import com.p1nkpeach.easyrpccore.server.VertxHttpServer;
+import com.p1nkpeach.easyrpccore.server.tcp.VertxTcpServer;
 import com.p1nkpeach.example.common.service.UserService;
 
 public class ProviderExample {
@@ -41,8 +40,13 @@ public class ProviderExample {
             throw new RuntimeException(e);
         }
 
-        // 启动web服务
-        HttpServer httpServer = new VertxHttpServer();
-        httpServer.doStart(RpcApplication.getRpcConfig().getServerPort());
+        // // 启动web服务
+        // HttpServer httpServer = new VertxHttpServer();
+        // httpServer.doStart(RpcApplication.getRpcConfig().getServerPort());
+
+        // 启动tcp服务
+        VertxTcpServer vertxTcpServer = new VertxTcpServer();
+        vertxTcpServer.doStart(RpcApplication.getRpcConfig().getServerPort());
+
     }
 }
